@@ -3,6 +3,7 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
+import { ListboxOption, Select } from '@headlessui/react';
 import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Register() {
@@ -11,6 +12,8 @@ export default function Register() {
         email: '',
         password: '',
         password_confirmation: '',
+        sex: '',
+        state: ''
     });
 
     const submit = (e) => {
@@ -98,6 +101,55 @@ export default function Register() {
 
                     <InputError
                         message={errors.password_confirmation}
+                        className="mt-2"
+                    />
+                </div>
+
+                <div className="mt-4">
+                    <InputLabel
+                        htmlFor="sex"
+                        value="Sex"
+                    />
+
+                    <select
+                        id="sex"
+                        name="sex"
+                        value={data.sex}
+                        onChange={(e) => setData('sex', e.target.value)}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                        required
+                    >
+                        <option value="">Select Sex</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <InputError
+                        message={errors.sex}
+                        className="mt-2"
+                    />
+                </div>
+
+                <div className="mt-4">
+                    <InputLabel
+                        htmlFor="state"
+                        value="State"
+                    />
+
+                    <TextInput
+                        id="state"
+                        type="text"
+                        name="state"
+                        value={data.state}
+                        className="mt-1 block w-full"
+                        autoComplete="address-level1"
+                        onChange={(e) => setData('state', e.target.value)}
+                        required
+                    />
+
+                    <InputError
+                        message={errors.state}
                         className="mt-2"
                     />
                 </div>
