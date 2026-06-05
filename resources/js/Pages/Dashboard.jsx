@@ -1,5 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import { TabList } from '@headlessui/react';
+import { Head, Link } from '@inertiajs/react';
 
 export default function Dashboard() {
     return (
@@ -20,6 +21,17 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div className="container-crud mt-4">
+                <Link
+                    href={route('create-blog')}
+                    className="btn btn-primary py-2"
+                >
+                    Create Blog
+                </Link>
+
+                
             </div>
         </AuthenticatedLayout>
     );
